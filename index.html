@@ -1,0 +1,841 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SwitZero — Natural Sweetener Stirrer · 0 Calorie</title>
+<meta name="description" content="SwitZero. Pure by nature, refined in Switzerland. Le touilleur naturel de luxe, 0 calorie.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --cream:#F2EFE6;       /* Alpine Cream */
+  --sand:#DCCDB7;        /* Sand Stone */
+  --taupe:#A89F8E;       /* Mountain Taupe */
+  --pine:#2F302B;        /* Deep Pine */
+  --bordeaux:#7A1E23;    /* Swiss Bordeaux */
+  --display:'Cormorant Garamond', Georgia, serif;
+  --body:'Jost', 'Avenir Next', 'Helvetica Neue', sans-serif;
+  --max:1180px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  background:var(--cream);
+  color:var(--pine);
+  font-family:var(--body);
+  font-weight:300;
+  font-size:17px;
+  line-height:1.7;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+::selection{background:var(--bordeaux);color:var(--cream)}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+
+/* ---------- utilitaires ---------- */
+.wrap{max-width:var(--max);margin:0 auto;padding:0 6vw}
+.eyebrow{
+  font-size:11px;letter-spacing:.42em;text-transform:uppercase;
+  color:var(--taupe);font-weight:400;
+}
+.rule{width:34px;height:1px;background:var(--taupe);margin:22px auto}
+.rule.left{margin:22px 0}
+
+/* ---------- header ---------- */
+header{
+  position:fixed;top:0;left:0;right:0;z-index:50;
+  padding:26px 6vw;
+  display:flex;align-items:center;justify-content:space-between;
+  transition:background .4s ease, box-shadow .4s ease, padding .4s ease;
+}
+header.scrolled{
+  background:rgba(242,239,230,.92);
+  backdrop-filter:blur(10px);
+  padding:16px 6vw;
+  box-shadow:0 1px 0 rgba(47,48,43,.07);
+}
+.logo{
+  font-family:var(--display);font-weight:500;font-size:24px;letter-spacing:.04em;
+  display:flex;align-items:center;gap:10px;
+}
+.cross{width:11px;height:11px;position:relative;flex:none}
+.cross::before,.cross::after{
+  content:"";position:absolute;background:var(--taupe);
+}
+.cross::before{left:50%;top:0;width:3px;height:100%;transform:translateX(-50%)}
+.cross::after{top:50%;left:0;height:3px;width:100%;transform:translateY(-50%)}
+.reg{vertical-align:super;font-size:.4em;font-weight:400;letter-spacing:0;line-height:0}
+.hero h1 .reg{font-size:.18em}
+.engraving .reg{font-size:.7em;vertical-align:super}
+.co2{color:#356B43;font-weight:400}
+nav{display:flex;gap:42px}
+nav a{
+  font-size:11px;letter-spacing:.32em;text-transform:uppercase;font-weight:400;
+  position:relative;padding-bottom:4px;
+}
+nav a::after{
+  content:"";position:absolute;left:0;bottom:0;height:1px;width:0;
+  background:var(--bordeaux);transition:width .35s ease;
+}
+nav a:hover::after,nav a:focus-visible::after{width:100%}
+@media(max-width:760px){nav{display:none}}
+.header-right{display:flex;align-items:center;gap:38px}
+/* sélecteur de langue */
+.lang{position:relative}
+.lang-btn{
+  background:none;border:1px solid rgba(47,48,43,.28);border-radius:30px;
+  padding:7px 13px;cursor:pointer;font-family:var(--body);
+  font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--pine);
+  display:flex;align-items:center;gap:7px;line-height:1;
+  transition:border-color .3s ease,color .3s ease;
+}
+.lang-btn:hover{border-color:var(--bordeaux);color:var(--bordeaux)}
+.lang-btn .chev{width:8px;height:8px;flex:none;transition:transform .3s ease}
+.lang.open .lang-btn .chev{transform:rotate(180deg)}
+.lang-menu{
+  position:absolute;top:calc(100% + 12px);right:0;
+  background:var(--cream);border:1px solid rgba(47,48,43,.12);
+  box-shadow:0 16px 36px -12px rgba(47,48,43,.35);
+  border-radius:10px;padding:7px;display:none;flex-direction:column;
+  min-width:160px;z-index:60;
+}
+.lang.open .lang-menu{display:flex}
+.lang-menu button{
+  background:none;border:none;text-align:left;cursor:pointer;white-space:nowrap;
+  font-family:var(--body);font-size:13px;color:var(--pine);font-weight:300;
+  padding:10px 15px;border-radius:6px;letter-spacing:.03em;
+  transition:background .2s ease,color .2s ease;
+}
+.lang-menu button:hover,.lang-menu button[aria-current="true"]{background:var(--sand);color:var(--bordeaux)}
+/* RTL (arabe) */
+[dir="rtl"] .lang-menu{right:auto;left:0}
+[dir="rtl"] .lang-menu button{text-align:right}
+[dir="rtl"] .step{text-align:right}
+[dir="rtl"] .sachet .credit{right:auto;left:34px}
+[dir="rtl"] .eyebrow,[dir="rtl"] nav a,[dir="rtl"] .lang-btn,[dir="rtl"] .tagline,[dir="rtl"] .zero,[dir="rtl"] .scroll,[dir="rtl"] .pillar h3,[dir="rtl"] .step h3,[dir="rtl"] .controls .label,[dir="rtl"] .loc,[dir="rtl"] .sachet .desc,[dir="rtl"] .sachet .credit,[dir="rtl"] .legal{letter-spacing:0}
+
+/* ---------- hero ---------- */
+.hero{
+  min-height:100vh;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  text-align:center;position:relative;overflow:hidden;
+  padding:140px 6vw calc(min(900px,120vw) * 0.1644 + 40px);
+}
+.hero .eyebrow{animation:rise 1.2s .2s ease both}
+.hero h1{
+  font-family:var(--display);
+  font-weight:500;
+  font-size:clamp(64px,11vw,148px);
+  letter-spacing:.02em;
+  line-height:1;
+  margin:18px 0 8px;
+  animation:rise 1.2s .35s ease both;
+}
+.hero h1 .z{font-style:italic;font-weight:400}
+.hero .tagline{
+  font-size:13px;letter-spacing:.5em;text-transform:uppercase;color:var(--pine);
+  font-weight:400;margin-top:10px;
+  animation:rise 1.2s .5s ease both;
+}
+.hero .zero{
+  margin-top:14px;font-size:12px;letter-spacing:.34em;text-transform:uppercase;
+  color:var(--bordeaux);font-weight:500;
+  animation:rise 1.2s .62s ease both;
+}
+/* la touillette — élément signature */
+.stirrer{
+  position:absolute;left:0;right:0;margin:0 auto;z-index:2;
+  bottom:calc(min(900px,120vw) * 0.1644 - 1px);
+  width:min(440px,76vw);height:15px;border-radius:10px;
+  background:linear-gradient(180deg,#e2d1ac 0%,#d4bf93 55%,#c4ae82 100%);
+  transform-origin:50% 100%;
+  box-shadow:0 12px 26px -12px rgba(47,48,43,.4), inset 0 1px 0 rgba(255,255,255,.4);
+  animation:rise 1.2s .78s ease both, stir 7s 2s ease-in-out infinite;
+}
+/* zone active gravée au laser — le sucrant */
+.stirrer .pocket{
+  position:absolute;right:3.5%;top:50%;transform:translateY(-50%);
+  width:32%;height:9px;border-radius:6px;
+  background:rgba(47,48,43,.12);
+  box-shadow:inset 0 1px 2px rgba(47,48,43,.42);
+}
+/* le sucrant actif : halo qui respire subtilement */
+.stirrer .active{
+  position:absolute;inset:1px;border-radius:5px;
+  background:
+    radial-gradient(circle at 18% 32%, rgba(255,255,255,.95) 0 1px, transparent 1.7px),
+    radial-gradient(circle at 39% 70%, rgba(255,255,255,.9) 0 1px, transparent 1.6px),
+    radial-gradient(circle at 57% 26%, rgba(255,255,255,.95) 0 1.1px, transparent 1.8px),
+    radial-gradient(circle at 73% 62%, rgba(255,255,255,.9) 0 1px, transparent 1.6px),
+    radial-gradient(circle at 88% 40%, rgba(255,255,255,.85) 0 .9px, transparent 1.5px),
+    radial-gradient(circle at 30% 86%, rgba(255,255,255,.8) 0 .8px, transparent 1.4px),
+    repeating-linear-gradient(118deg, rgba(255,255,255,.5) 0 1.4px, rgba(255,255,255,0) 1.4px 5px),
+    linear-gradient(180deg,#fcfdfd 0%,#eef1f0 46%,#d9dad4 100%);
+  box-shadow:inset 0 1px 1px rgba(255,255,255,.75), inset 0 -1px 1px rgba(47,48,43,.14);
+  animation:pulse 3.4s ease-in-out infinite;
+}
+/* gravure laser SwitZero sur le manche */
+.stirrer .engraving{
+  position:absolute;left:13%;top:50%;transform:translateY(-50%);
+  font-family:var(--display);font-weight:500;font-size:11px;letter-spacing:.06em;
+  color:#7a6238;
+  text-shadow:0 .5px 0 rgba(255,255,255,.45), 0 -.5px .5px rgba(47,48,43,.35);
+  opacity:.78;mix-blend-mode:multiply;pointer-events:none;white-space:nowrap;
+}
+@media(max-width:520px){.stirrer .engraving{font-size:9px}}
+.hero .scroll{
+  position:absolute;bottom:36px;left:50%;transform:translateX(-50%);
+  font-size:10px;letter-spacing:.4em;text-transform:uppercase;color:var(--taupe);
+}
+.hero .scroll::after{
+  content:"";display:block;width:1px;height:38px;background:var(--taupe);
+  margin:10px auto 0;animation:drip 2.4s ease-in-out infinite;
+  transform-origin:top;
+}
+@media(max-width:600px){
+  .hero .scroll{bottom:16px}
+  .hero .scroll::after{height:20px;margin-top:7px}
+}
+/* montagnes en filigrane */
+.peaks{
+  position:absolute;bottom:-2px;left:50%;transform:translateX(-50%);
+  width:min(900px,120vw);opacity:.5;pointer-events:none;
+}
+.peaks path{stroke:var(--taupe);stroke-width:1.1;fill:none}
+
+@keyframes rise{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:none}}
+@keyframes stir{0%{transform:rotate(0deg)}16%{transform:rotate(-3.1deg)}40%{transform:rotate(2.4deg)}60%{transform:rotate(-1.5deg)}80%{transform:rotate(0.9deg)}100%{transform:rotate(0deg)}}
+@keyframes pulse{
+  0%,100%{opacity:.5; box-shadow:0 0 0 0 rgba(217,162,83,0)}
+  50%{opacity:1; box-shadow:0 0 10px 1px rgba(217,162,83,.6)}
+}
+@keyframes drip{0%{transform:scaleY(0)}45%{transform:scaleY(1)}100%{transform:scaleY(1);opacity:0}}
+
+/* ---------- manifesto ---------- */
+.manifesto{
+  background:var(--pine);color:var(--cream);
+  padding:140px 6vw;text-align:center;
+}
+.manifesto .eyebrow{color:var(--sand)}
+.manifesto blockquote{
+  font-family:var(--display);font-weight:400;font-style:italic;
+  font-size:clamp(30px,4.6vw,52px);line-height:1.3;
+  max-width:820px;margin:34px auto 0;
+}
+.manifesto blockquote em{font-style:normal;color:var(--sand)}
+.manifesto p.sub{
+  margin:36px auto 0;max-width:520px;color:var(--taupe);
+  font-size:15px;letter-spacing:.04em;
+}
+
+/* ---------- piliers ---------- */
+.pillars{padding:130px 6vw;text-align:center}
+.pillars .grid{
+  max-width:var(--max);margin:70px auto 0;
+  display:grid;grid-template-columns:repeat(4,1fr);gap:0;
+}
+.pillar{
+  padding:46px 30px;border-left:1px solid rgba(168,159,142,.35);
+  transition:background .4s ease;
+}
+.pillar:first-child{border-left:none}
+.pillar:hover{background:rgba(220,205,183,.28)}
+.pillar svg{width:40px;height:40px;margin:0 auto 26px;stroke:var(--pine);fill:none;stroke-width:1.2}
+.pillar h3{
+  font-size:12px;letter-spacing:.3em;text-transform:uppercase;font-weight:500;
+  margin-bottom:12px;
+}
+.pillar p{font-size:14.5px;color:var(--taupe);max-width:220px;margin:0 auto}
+@media(max-width:900px){
+  .pillars .grid{grid-template-columns:1fr 1fr}
+  .pillar{border:none;border-top:1px solid rgba(168,159,142,.35)}
+}
+@media(max-width:520px){.pillars .grid{grid-template-columns:1fr}}
+
+/* ---------- rituel ---------- */
+.ritual{
+  background:var(--sand);
+  padding:140px 6vw;
+}
+.ritual .inner{
+  max-width:var(--max);margin:0 auto;
+  display:grid;grid-template-columns:1fr 1.2fr;gap:8vw;align-items:center;
+}
+.ritual h2{
+  font-family:var(--display);font-weight:500;
+  font-size:clamp(38px,5vw,60px);line-height:1.12;
+}
+.ritual h2 span{font-style:italic;font-weight:400;color:var(--bordeaux)}
+.steps{display:flex;flex-direction:column}
+.step{
+  display:flex;gap:30px;align-items:baseline;
+  padding:34px 0;border-top:1px solid rgba(47,48,43,.18);
+}
+.step:last-child{border-bottom:1px solid rgba(47,48,43,.18)}
+.step .n{
+  font-family:var(--display);font-style:italic;font-size:26px;color:var(--bordeaux);
+  min-width:38px;
+}
+.step h3{
+  font-size:13px;letter-spacing:.28em;text-transform:uppercase;font-weight:500;
+  margin-bottom:6px;
+}
+.step p{font-size:15px;color:rgba(47,48,43,.72);max-width:380px}
+@media(max-width:860px){
+  .ritual .inner{grid-template-columns:1fr;gap:60px}
+}
+
+/* ---------- configurateur ---------- */
+.configurator{
+  background:var(--sand);padding:130px 6vw;
+}
+.configurator .head{text-align:center;max-width:640px;margin:0 auto 70px}
+.configurator .head h2{
+  font-family:var(--display);font-weight:500;font-size:clamp(34px,4.6vw,56px);
+  line-height:1.12;margin-top:18px;
+}
+.configurator .head h2 span{font-style:italic;font-weight:400;color:var(--bordeaux)}
+.configurator .head p{margin-top:20px;font-size:15px;color:rgba(47,48,43,.72)}
+.config-grid{
+  max-width:var(--max);margin:0 auto;
+  display:grid;grid-template-columns:1.1fr .9fr;gap:6vw;align-items:center;
+}
+/* aperçu sachet */
+.preview{
+  display:flex;align-items:center;justify-content:center;
+  min-height:300px;
+}
+.sachet-wrap{position:relative;width:100%;max-width:420px;display:flex;align-items:center}
+/* la touillette qui dépasse du sachet */
+.sachet-wrap .stick{
+  position:absolute;z-index:0;top:50%;
+  right:-96px;width:95%;height:24px;border-radius:12px;
+  background:linear-gradient(180deg,#e8d6af 0%,#d6c092 52%,#c2ab7f 100%);
+  box-shadow:0 10px 22px -9px rgba(47,48,43,.5), inset 0 1px 0 rgba(255,255,255,.4);
+  transform:translate(-122px,-50%);
+  transition:transform .85s cubic-bezier(.22,1,.36,1);
+}
+.sachet-wrap .stick.out{transform:translate(0,-50%)}
+.sachet-wrap .stick::after{
+  content:"";position:absolute;right:6px;top:50%;transform:translateY(-50%);
+  width:88px;height:15px;border-radius:7px;
+  background:
+    radial-gradient(circle at 16% 30%, rgba(255,255,255,.95) 0 1.4px, transparent 2.1px),
+    radial-gradient(circle at 38% 68%, rgba(255,255,255,.9) 0 1.3px, transparent 2px),
+    radial-gradient(circle at 56% 26%, rgba(255,255,255,.95) 0 1.5px, transparent 2.2px),
+    radial-gradient(circle at 72% 62%, rgba(255,255,255,.9) 0 1.3px, transparent 2px),
+    radial-gradient(circle at 86% 38%, rgba(255,255,255,.85) 0 1.1px, transparent 1.8px),
+    radial-gradient(circle at 30% 86%, rgba(255,255,255,.8) 0 1px, transparent 1.7px),
+    repeating-linear-gradient(118deg, rgba(255,255,255,.5) 0 1.6px, rgba(255,255,255,0) 1.6px 6px),
+    linear-gradient(180deg,#fcfdfd 0%,#eef1f0 46%,#d9dad4 100%);
+  box-shadow:inset 0 1px 1px rgba(255,255,255,.75), inset 0 -1px 1px rgba(47,48,43,.16), 0 0 0 1px rgba(47,48,43,.06);
+}
+.sachet{
+  position:relative;z-index:1;width:100%;height:74px;border-radius:7px;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  box-shadow:0 18px 44px -20px rgba(47,48,43,.5);
+  transition:background .5s ease;
+  overflow:hidden;
+}
+/* extrémités thermoformées striées */
+.sachet::before,.sachet::after{
+  content:"";position:absolute;top:0;bottom:0;width:22px;
+  background-image:repeating-linear-gradient(90deg,rgba(47,48,43,.13) 0 2px,transparent 2px 5px);
+  opacity:.8;
+}
+.sachet::before{left:0;border-right:1px solid rgba(47,48,43,.12)}
+.sachet::after{right:0;border-left:1px solid rgba(47,48,43,.12)}
+.sachet .yourlogo{
+  font-family:var(--display);font-weight:500;font-size:23px;letter-spacing:.02em;
+  line-height:1;transition:color .4s ease;z-index:1;
+}
+.sachet .desc{
+  margin-top:6px;font-size:7.5px;letter-spacing:.3em;text-transform:uppercase;
+  z-index:1;opacity:.85;transition:color .4s ease;
+}
+.sachet .credit{
+  position:absolute;bottom:7px;right:28px;z-index:1;
+  font-size:7px;letter-spacing:.2em;text-transform:uppercase;
+  color:#DCCDB7;
+}
+[dir="rtl"] .sachet-wrap .stick{right:auto;left:-96px;transform:translate(122px,-50%)}
+[dir="rtl"] .sachet-wrap .stick.out{transform:translate(0,-50%)}
+[dir="rtl"] .sachet-wrap .stick::after{right:auto;left:6px}
+/* contrôles */
+.controls .group{margin-bottom:38px}
+.controls .label{
+  font-size:11px;letter-spacing:.3em;text-transform:uppercase;font-weight:500;
+  color:var(--pine);margin-bottom:4px;display:flex;justify-content:space-between;align-items:baseline;
+}
+.controls .label .pick{
+  font-family:var(--body);font-size:11px;letter-spacing:.04em;text-transform:none;
+  color:var(--taupe);font-weight:400;
+}
+.controls .hint{font-size:12.5px;color:rgba(47,48,43,.6);margin-bottom:16px}
+.swatches{display:flex;flex-wrap:wrap;gap:10px}
+.swatch{
+  width:34px;height:34px;border-radius:50%;cursor:pointer;position:relative;
+  border:1px solid rgba(47,48,43,.18);
+  transition:transform .2s ease, box-shadow .2s ease;
+}
+.swatch:hover{transform:scale(1.1)}
+.swatch[aria-pressed="true"]{
+  box-shadow:0 0 0 2px var(--sand), 0 0 0 4px var(--pine);
+}
+@media(max-width:860px){
+  .config-grid{grid-template-columns:1fr;gap:54px}
+  .preview{order:-1}
+}
+
+/* ---------- maison ---------- */
+.maison{padding:150px 6vw;text-align:center;position:relative}
+.maison-inner{max-width:820px;margin:0 auto;display:flex;flex-direction:column;align-items:center}
+.maison .big{
+  font-family:var(--display);font-weight:400;
+  font-size:clamp(26px,3.6vw,40px);line-height:1.45;
+  margin:10px 0 0;
+}
+.maison .big strong{font-weight:600;color:var(--bordeaux)}
+.maison .loc{
+  margin-top:46px;font-size:12px;letter-spacing:.36em;text-transform:uppercase;
+  color:var(--taupe);
+}
+
+/* ---------- contact ---------- */
+.contact{
+  background:var(--pine);color:var(--cream);
+  padding:130px 6vw;text-align:center;
+}
+.contact h2{
+  font-family:var(--display);font-weight:500;
+  font-size:clamp(34px,4.6vw,54px);margin-top:26px;
+}
+.contact p{color:var(--taupe);max-width:480px;margin:22px auto 0;font-size:15px}
+.contact .form{
+  margin:48px auto 0;max-width:480px;display:flex;
+  border-bottom:1px solid var(--taupe);
+}
+.contact input{
+  flex:1;background:none;border:none;outline:none;color:var(--cream);
+  font-family:var(--body);font-size:15px;letter-spacing:.04em;padding:14px 4px;
+}
+.contact input::placeholder{color:rgba(168,159,142,.8)}
+.contact button{
+  background:none;border:none;cursor:pointer;color:var(--cream);
+  font-family:var(--body);font-size:11px;letter-spacing:.34em;text-transform:uppercase;
+  padding:14px 4px;transition:color .3s ease;
+}
+.contact button:hover,.contact button:focus-visible{color:#c97a80}
+.contact .note{font-size:12px;color:rgba(168,159,142,.7);margin-top:18px;letter-spacing:.06em}
+
+/* ---------- footer ---------- */
+footer{
+  padding:60px 6vw;
+  display:flex;align-items:center;justify-content:space-between;gap:30px;flex-wrap:wrap;
+}
+footer .logo{font-size:19px}
+footer .legal{font-size:11.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--taupe)}
+
+/* ---------- reveal au scroll ---------- */
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .9s ease, transform .9s ease}
+.reveal.in{opacity:1;transform:none}
+
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .reveal{opacity:1;transform:none}
+  html{scroll-behavior:auto}
+}
+/* ---------- laboratoire ---------- */
+.lab{padding:130px 6vw;text-align:center;position:relative}
+.lab-inner{max-width:900px;margin:0 auto}
+.lab h2{font-family:var(--display);font-weight:400;font-size:clamp(28px,4vw,46px);line-height:1.12;margin-top:8px}
+.lab .lab-p{max-width:680px;margin:26px auto 0;color:rgba(47,48,43,.82)}
+.lab .lab-p strong{font-weight:600;color:var(--bordeaux)}
+.chart{margin:62px auto 0;max-width:760px}
+.chart svg{width:100%;height:auto;display:block;overflow:visible}
+.chart text{font-family:var(--body);font-weight:300}
+.legend{display:flex;flex-wrap:wrap;justify-content:center;gap:22px;margin-top:30px}
+.legend .lg{display:flex;align-items:center;gap:9px;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--pine)}
+.legend .sw{width:24px;height:0;border-top:2.5px solid var(--taupe);display:inline-block}
+.legend .sw-sugar{border-top-style:dashed;border-top-color:#B59E7A}
+.legend .sw-swit{border-top-width:3px;border-top-color:#7A1E23}
+.legend .sw-aroma{border-top-color:#C2B6A2}
+.legend .sw-bitter{border-top-style:dotted;border-top-color:#6E6A60}
+.lab-cap{margin-top:18px;font-size:10.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--taupe)}
+.lab-stats{display:flex;flex-wrap:wrap;justify-content:center;gap:46px;margin-top:64px}
+.lab-stat{display:flex;flex-direction:column;align-items:center;gap:10px;max-width:230px}
+.lab-stat .big{font-family:var(--display);font-size:23px;color:var(--pine);line-height:1.1}
+.lab-stat .sub{font-size:12.5px;color:var(--taupe)}
+.spark{width:120px;height:40px}
+[dir="rtl"] .legend .lg,[dir="rtl"] .lab-cap,[dir="rtl"] .lab-stat .big,[dir="rtl"] .lab-stat .sub{letter-spacing:0}
+@media(max-width:680px){.lab-stats{gap:32px}.lab{padding:100px 6vw}}
+</style>
+</head>
+<body>
+
+<header id="hd">
+  <a class="logo" href="#"><span class="cross" aria-hidden="true"></span><span class="word">SwitZero<span class="reg">®</span></span></a>
+  <div class="header-right">
+    <nav>
+      <a href="#manifeste" data-i18n="nav.manifeste">Manifeste</a>
+      <a href="#essence" data-i18n="nav.essence">Essence</a>
+      <a href="#rituel" data-i18n="nav.rituel">Rituel</a>
+      <a href="#laboratoire" data-i18n="nav.lab">Laboratoire</a>
+      <a href="#configurateur" data-i18n="nav.config">Configurateur</a>
+      <a href="#contact" data-i18n="nav.contact">Contact</a>
+    </nav>
+    <div class="lang" id="lang">
+      <button class="lang-btn" id="langBtn" aria-haspopup="true" aria-expanded="false" aria-label="Language">
+        <span id="langCurrent">EN</span>
+        <svg class="chev" viewBox="0 0 10 6" aria-hidden="true"><path d="M1 1l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.4"/></svg>
+      </button>
+      <div class="lang-menu" id="langMenu" role="menu">
+        <button data-lang="en" role="menuitem">EN · English</button>
+        <button data-lang="fr" role="menuitem">FR · Français</button>
+        <button data-lang="de" role="menuitem">DE · Deutsch</button>
+        <button data-lang="es" role="menuitem">ES · Español</button>
+        <button data-lang="it" role="menuitem">IT · Italiano</button>
+        <button data-lang="ja" role="menuitem">日本語</button>
+        <button data-lang="zh" role="menuitem">中文</button>
+        <button data-lang="ru" role="menuitem">Русский</button>
+        <button data-lang="ar" role="menuitem">العربية</button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <p class="eyebrow" data-i18n="hero.eyebrow">Pur par nature · Raffiné en Suisse</p>
+  <h1>Swit<span class="z">Z</span>ero<span class="reg">®</span></h1>
+  <p class="tagline" data-i18n="hero.tagline">Touilleur Sucrant Naturel</p>
+  <p class="zero" data-i18n="hero.zero">0 Calorie</p>
+  <div class="stirrer" aria-hidden="true">
+    <span class="engraving">SwitZero<span class="reg">®</span></span>
+    <span class="pocket"><span class="active"></span></span>
+  </div>
+
+  <svg class="peaks" viewBox="0 0 900 160" aria-hidden="true">
+    <path d="M0 160 L120 80 L180 120 L300 30 L380 95 L450 12 L530 100 L620 45 L700 115 L790 70 L900 160"/>
+  </svg>
+  <span class="scroll" data-i18n="hero.scroll">Découvrir</span>
+</section>
+
+<!-- MANIFESTE -->
+<section class="manifesto" id="manifeste">
+  <p class="eyebrow reveal" data-i18n="man.eyebrow">Manifeste</p>
+  <blockquote class="reveal" data-i18n="man.quote">« Goûtez d’abord le café.<br><em>La douceur vient après.</em> »</blockquote>
+  <p class="sub reveal" data-i18n="man.sub">SwitZero ne masque rien. Il accompagne. Une douceur naturelle et discrète qui laisse votre tasse — café comme thé — s’exprimer pleinement : sans sucre, sans calorie, sans compromis.</p>
+</section>
+
+<!-- ESSENCE / PILIERS -->
+<section class="pillars" id="essence">
+  <p class="eyebrow reveal" data-i18n="ess.eyebrow">L’essence</p>
+  <div class="rule reveal"></div>
+  <div class="grid">
+    <div class="pillar reveal">
+      <svg viewBox="0 0 40 40"><path d="M20 33 C20 22 26 14 33 11 C33 22 28 30 20 33 Z M20 33 C20 25 15 19 9 17 C10 25 14 31 20 33 Z" /></svg>
+      <h3 data-i18n="ess.p1t">Origine naturelle</h3>
+      <p data-i18n="ess.p1d">Des ingrédients sélectionnés avec exigence, issus de la nature.</p>
+    </div>
+    <div class="pillar reveal">
+      <svg viewBox="0 0 40 40"><circle cx="20" cy="20" r="11"/><line x1="11" y1="29" x2="29" y2="11"/></svg>
+      <h3 data-i18n="ess.p2t">0 calorie</h3>
+      <p data-i18n="ess.p2d">Toute la douceur, sans le sucre. Sans culpabilité.</p>
+    </div>
+    <div class="pillar reveal">
+      <svg viewBox="0 0 40 40"><path d="M10 24 A6 6 0 0 1 13 13.5 A7.5 7.5 0 0 1 27 14.5 A6 6 0 0 1 30 24 Z"/><path d="M20 26 L20 33"/><path d="M16 29 L20 34 L24 29"/></svg>
+      <h3 data-i18n="ess.p4t">Impact positif</h3>
+      <p data-i18n="ess.p4d">Le choisir réduit activement les émissions — plus de filière du sucre, ni cuillère à laver — environ <span class="co2">8 g de CO₂</span> évités par tasse.</p>
+    </div>
+    <div class="pillar reveal">
+      <svg viewBox="0 0 40 40"><path d="M5 30 L14 16 L19 23 L26 11 L35 30 Z"/></svg>
+      <h3 data-i18n="ess.p3t">Affiné en Suisse</h3>
+      <p data-i18n="ess.p3d">Le savoir-faire et la technologie suisses, affinés en un seul geste.</p>
+    </div>
+  </div>
+</section>
+
+<!-- RITUEL -->
+<section class="ritual" id="rituel">
+  <div class="inner">
+    <div class="reveal">
+      <p class="eyebrow" data-i18n="rit.eyebrow">Le rituel</p>
+      <div class="rule left"></div>
+      <h2 data-i18n="rit.h2">Un geste simple.<br><span>Une expérience rare.</span></h2>
+    </div>
+    <div class="steps">
+      <div class="step reveal">
+        <span class="n">I.</span>
+        <div>
+          <h3 data-i18n="rit.s1t">Déposez</h3>
+          <p data-i18n="rit.s1d">Glissez votre SwitZero dans votre café ou votre thé chaud.</p>
+        </div>
+      </div>
+      <div class="step reveal">
+        <span class="n">II.</span>
+        <div>
+          <h3 data-i18n="rit.s2t">Tournez</h3>
+          <p data-i18n="rit.s2d">Quelques instants suffisent : environ 5 secondes pour l’équivalent d’un demi-sachet de sucre ordinaire, jusqu’à 10 secondes pour l’effet tout en douceur d’un sachet entier (4 g).</p>
+        </div>
+      </div>
+      <div class="step reveal">
+        <span class="n">III.</span>
+        <div>
+          <h3 data-i18n="rit.s3t">Savourez</h3>
+          <p data-i18n="rit.s3d">L’arôme d’abord. Puis la douceur, juste et précise.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONFIGURATEUR -->
+<section class="lab" id="laboratoire">
+  <div class="lab-inner">
+    <p class="eyebrow reveal" data-i18n="lab.eyebrow">Notre laboratoire</p>
+    <div class="rule reveal"></div>
+    <h2 class="reveal" data-i18n="lab.h2">La douceur, au moment juste.</h2>
+    <p class="lab-p reveal" data-i18n="lab.p">Notre laboratoire a mis au point une formule d’origine naturelle, à la fois innovante et unique, qui ne masque pas l’arôme du café et du thé : elle le révèle et en amplifie l’effet. Quand le sucre se libère d’emblée, en même temps que l’arôme, et l’étouffe, notre douceur sait attendre — elle n’accompagne que l’amertume, celle qui vient après les arômes. Sans calorie, sans pic de glycémie : de quoi révolutionner la boisson chaude pour <strong>n’en garder que le plaisir</strong>.</p>
+
+    <div class="chart reveal">
+      <svg viewBox="0 0 720 380" role="img" aria-label="Courbe sensorielle">
+        <line x1="70" y1="50" x2="70" y2="300" stroke="rgba(47,48,43,.12)" stroke-width="1"/>
+        <line x1="70" y1="300" x2="660" y2="300" stroke="rgba(47,48,43,.28)" stroke-width="1"/>
+        <polyline points="654,295 663,300 654,305" fill="none" stroke="rgba(47,48,43,.28)" stroke-width="1"/>
+        <line x1="459" y1="90" x2="459" y2="300" stroke="rgba(47,48,43,.2)" stroke-width="1" stroke-dasharray="3 5"/>
+        <path d="M70.0 255.9 C81.8 240.8 119.2 195.5 140.8 165.2 C162.4 135.0 177.2 81.5 199.8 74.6 C222.4 67.7 249.0 104.4 276.5 123.6 C304.0 142.8 330.6 171.8 365.0 189.8 C399.4 207.7 448.6 221.2 483.0 231.4 C517.4 241.6 542.0 246.1 571.5 251.0 C601.0 255.9 645.2 259.2 660.0 260.8" fill="none" stroke="#C2B6A2" stroke-width="2"/>
+        <path d="M70.0 287.8 C84.8 285.7 129.0 284.9 158.5 275.5 C188.0 266.1 212.6 251.8 247.0 231.4 C281.4 211.0 329.6 176.7 365.0 153.0 C400.4 129.3 429.9 93.4 459.4 89.3 C488.9 85.2 508.6 115.8 542.0 128.5 C575.4 141.2 640.3 159.1 660.0 165.2" fill="none" stroke="#6E6A60" stroke-width="1.8" stroke-dasharray="1 5" stroke-linecap="round" opacity="0.8"/>
+        <path d="M70.0 285.3 C75.9 267.3 93.6 211.0 105.4 177.5 C117.2 144.0 127.0 101.6 140.8 84.4 C154.6 67.2 155.6 75.4 188.0 74.6 C220.4 73.8 286.3 78.3 335.5 79.5 C384.7 80.7 428.9 80.7 483.0 81.9 C537.1 83.2 630.5 86.0 660.0 86.8" fill="none" stroke="#B59E7A" stroke-width="2.6" stroke-dasharray="9 7" stroke-linecap="round"/>
+        <path d="M70.0 282.9 C84.8 281.6 129.0 279.2 158.5 275.5 C188.0 271.8 217.5 273.1 247.0 260.8 C276.5 248.6 306.0 224.9 335.5 202.0 C365.0 179.1 403.4 142.4 424.0 123.6 C444.6 104.8 439.7 86.9 459.4 89.3 C479.1 91.8 508.6 123.6 542.0 138.3 C575.4 153.0 640.3 171.0 660.0 177.5" fill="none" stroke="#7A1E23" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/>
+        <circle cx="199.8" cy="74.6" r="3.2" fill="#9C8E78"/>
+        <circle cx="459.4" cy="89.3" r="3.8" fill="#7A1E23"/>
+        <text x="200" y="56" text-anchor="middle" font-size="13" fill="#6E6A60" data-i18n="lab.annAroma">L’arôme d’abord</text>
+        <text x="459" y="70" text-anchor="middle" font-size="12.5" fill="#7A1E23" data-i18n="lab.annPeak">Douceur au pic d’amertume</text>
+        <text x="70" y="42" text-anchor="start" font-size="12" fill="#A89F8E" letter-spacing="1.5" data-i18n="lab.axisI">Intensité</text>
+        <text x="660" y="326" text-anchor="end" font-size="12" fill="#A89F8E" letter-spacing="1" data-i18n="lab.axisT">En bouche →</text>
+      </svg>
+      <div class="legend">
+        <span class="lg"><i class="sw sw-sugar"></i><span data-i18n="lab.legSugar">Sucre</span></span>
+        <span class="lg"><i class="sw sw-swit"></i>SwitZero<span class="reg">®</span></span>
+        <span class="lg"><i class="sw sw-aroma"></i><span data-i18n="lab.legAroma">Arôme</span></span>
+        <span class="lg"><i class="sw sw-bitter"></i><span data-i18n="lab.legBitter">Amertume</span></span>
+      </div>
+      <p class="lab-cap" data-i18n="lab.caption">Schéma illustratif</p>
+    </div>
+
+    <div class="lab-stats reveal">
+      <div class="lab-stat">
+        <span class="big" data-i18n="lab.stat1">0 calorie</span>
+        <span class="sub" data-i18n="lab.stat1sub">vs ~16 kcal pour le sucre</span>
+      </div>
+      <div class="lab-stat">
+        <span class="big" data-i18n="lab.stat2">Aucun pic de glycémie</span>
+        <svg class="spark" viewBox="0 0 130 44" aria-hidden="true">
+          <path d="M6 34 C30 34 40 9 58 9 C76 9 86 34 124 34" fill="none" stroke="#B59E7A" stroke-width="2" stroke-dasharray="6 5"/>
+          <path d="M6 31 L124 31" fill="none" stroke="#7A1E23" stroke-width="2.6" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <div class="lab-stat">
+        <span class="big" data-i18n="lab.stat3">Arômes préservés</span>
+        <span class="sub" data-i18n="lab.stat3sub">l’arôme avant la douceur</span>
+      </div>
+      <div class="lab-stat">
+        <span class="big" data-i18n="lab.stat4">Sans arrière-goût</span>
+        <span class="sub" data-i18n="lab.stat4sub">ni amertume, ni note métallique</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="configurator" id="configurateur">
+  <div class="head reveal">
+    <p class="eyebrow" data-i18n="cfg.eyebrow">Sur mesure · B2B</p>
+    <h2 data-i18n="cfg.h2">Votre marque,<br><span>notre savoir-faire.</span></h2>
+    <p data-i18n="cfg.p">Composez votre packaging en marque blanche. Choisissez la teinte de votre sachet et la couleur de votre logo selon votre nuancier RAL — l’aperçu se met à jour en direct.</p>
+  </div>
+
+  <div class="config-grid">
+    <div class="controls reveal">
+      <div class="group">
+        <div class="label"><span data-i18n="cfg.sachetLabel">Couleur du sachet</span> <span class="pick" id="pickSachet">Blanc pur · RAL 9010</span></div>
+        <p class="hint" data-i18n="cfg.sachetHint">La teinte de l’emballage qui portera votre marque.</p>
+        <div class="swatches" id="sachetSwatches"></div>
+      </div>
+      <div class="group">
+        <div class="label"><span data-i18n="cfg.logoLabel">Couleur du logo</span> <span class="pick" id="pickLogo">Vert bleu · RAL 6004</span></div>
+        <p class="hint" data-i18n="cfg.logoHint">La couleur de votre logo, selon votre code RAL.</p>
+        <div class="swatches" id="logoSwatches"></div>
+      </div>
+    </div>
+
+    <div class="preview reveal">
+      <div class="sachet-wrap">
+        <span class="stick" aria-hidden="true"></span>
+        <div class="sachet" id="sachet" style="background:#F2EFE6">
+          <span class="yourlogo" id="yourLogo" data-i18n="cfg.yourlogo" style="color:#2F302B">Votre logo</span>
+          <span class="desc" id="yourDesc" data-i18n="cfg.desc" style="color:#2F302B">Touilleur Sucrant Naturel · 0 Calorie</span>
+          <span class="credit" data-i18n="cfg.credit">Design par SwitZero</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MAISON -->
+<section class="maison">
+  <div class="maison-inner">
+    <p class="eyebrow reveal" data-i18n="mai.eyebrow">La maison</p>
+    <div class="rule reveal"></div>
+    <p class="big reveal" data-i18n="mai.big">Née au bord du Léman, SwitZero réunit la rigueur suisse et l’élégance d’un objet du quotidien — <strong>pur par nature, raffiné en Suisse.</strong></p>
+    <p class="loc reveal" data-i18n="mai.loc">1814 La Tour-de-Peilz · Suisse</p>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <p class="eyebrow reveal" data-i18n="con.eyebrow">Bientôt</p>
+  <h2 class="reveal" data-i18n="con.h2">Soyez les premiers informés.</h2>
+  <p class="reveal" data-i18n="con.p">Laissez-nous votre adresse pour découvrir SwitZero en avant-première.</p>
+  <div class="form reveal">
+    <input type="email" data-i18n-ph="con.placeholder" placeholder="Votre adresse e-mail" aria-label="email">
+    <button type="button" id="subBtn" data-i18n="con.btn">S’inscrire</button>
+  </div>
+  <p class="note reveal" data-i18n="con.note">Professionnels HoReCa — contactez-nous : hello@switzero.com</p>
+</section>
+
+<footer>
+  <span class="logo"><span class="cross" aria-hidden="true"></span><span class="word">SwitZero<span class="reg">®</span></span></span>
+  <span class="legal" data-i18n="ftr.legal">© 2026 SwitZero · Conçu en Suisse</span>
+</footer>
+
+<script>
+// header au scroll
+const hd=document.getElementById('hd');
+addEventListener('scroll',()=>hd.classList.toggle('scrolled',scrollY>40),{passive:true});
+
+// reveal au scroll
+const io=new IntersectionObserver(es=>es.forEach(e=>{
+  if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}
+}),{threshold:.18});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+// touillette : sort à l'arrivée dans la section + à chaque changement de couleur
+const cfgSection=document.getElementById('configurateur');
+const stickEl=document.querySelector('.sachet-wrap .stick');
+function pulseStick(){
+  if(!stickEl) return;
+  stickEl.classList.remove('out');                  // rentre
+  setTimeout(()=>stickEl.classList.add('out'),470);  // puis ressort
+}
+if(cfgSection && stickEl){
+  const stickIO=new IntersectionObserver(es=>es.forEach(e=>{
+    stickEl.classList.toggle('out', e.isIntersecting);
+  }),{rootMargin:'-15% 0px -15% 0px',threshold:0});
+  stickIO.observe(cfgSection);
+}
+
+// ---------- configurateur ----------
+// Sélection de couleurs RAL (nuancier RAL Classic, hex approximés)
+const RAL=[
+  {ral:'RAL 9010',name:'Blanc pur',hex:'#F2EFE6'},
+  {ral:'RAL 1013',name:'Blanc perlé',hex:'#E3D9C6'},
+  {ral:'RAL 1014',name:'Ivoire',hex:'#DCCDB7'},
+  {ral:'RAL 1019',name:'Beige gris',hex:'#A48F7B'},
+  {ral:'RAL 7044',name:'Gris soie',hex:'#B5B0A1'},
+  {ral:'RAL 7006',name:'Beige gris foncé',hex:'#766A5E'},
+  {ral:'RAL 8000',name:'Brun vert',hex:'#826C34'},
+  {ral:'RAL 8011',name:'Brun noisette',hex:'#5A3A29'},
+  {ral:'RAL 6013',name:'Vert jonc',hex:'#7D7259'},
+  {ral:'RAL 6004',name:'Vert bleu',hex:'#2F302B'},
+  {ral:'RAL 6020',name:'Vert oxyde',hex:'#37422F'},
+  {ral:'RAL 3005',name:'Rouge vin',hex:'#7A1E23'},
+  {ral:'RAL 5004',name:'Bleu noir',hex:'#1B2631'},
+  {ral:'RAL 9005',name:'Noir foncé',hex:'#1A1A1A'},
+  {ral:'RAL 1036',name:'Or perlé',hex:'#9A7032'},
+];
+
+const sachet=document.getElementById('sachet');
+const yourLogo=document.getElementById('yourLogo');
+const yourDesc=document.getElementById('yourDesc');
+const pickSachet=document.getElementById('pickSachet');
+const pickLogo=document.getElementById('pickLogo');
+
+// luminance pour adapter automatiquement la lisibilité (non utilisé pour forcer, juste indicatif)
+function buildSwatches(containerId, onPick, selectedHex){
+  const c=document.getElementById(containerId);
+  RAL.forEach(col=>{
+    const b=document.createElement('button');
+    b.className='swatch';
+    b.style.background=col.hex;
+    b.title=col.name+' · '+col.ral;
+    b.setAttribute('aria-label',col.name+' '+col.ral);
+    b.setAttribute('aria-pressed', col.hex.toLowerCase()===selectedHex.toLowerCase());
+    b.addEventListener('click',()=>{
+      c.querySelectorAll('.swatch').forEach(s=>s.setAttribute('aria-pressed','false'));
+      b.setAttribute('aria-pressed','true');
+      onPick(col);
+    });
+    c.appendChild(b);
+  });
+}
+
+buildSwatches('sachetSwatches',col=>{
+  sachet.style.background=col.hex;
+  pickSachet.textContent=col.name+' · '+col.ral;
+  pulseStick();
+},'#F2EFE6');
+
+buildSwatches('logoSwatches',col=>{
+  yourLogo.style.color=col.hex;
+  yourDesc.style.color=col.hex;
+  pickLogo.textContent=col.name+' · '+col.ral;
+  pulseStick();
+},'#2F302B');
+
+/* ---------- i18n / langues ---------- */
+const I18N = {
+en:{'nav.manifeste':'Manifesto','nav.essence':'Essence','nav.rituel':'Ritual','nav.config':'Configurator','nav.contact':'Contact','hero.eyebrow':'Pure by nature · Refined in Switzerland','hero.tagline':'Natural Sweetener Stirrer','hero.zero':'0 Calorie','hero.scroll':'Discover','man.eyebrow':'Manifesto','man.quote':'“Taste the coffee first.<br><em>The sweetness comes after.</em>”','man.sub':'SwitZero hides nothing. It accompanies. A natural, discreet sweetness that lets your cup express itself fully — no sugar, no calories, no compromise.','ess.eyebrow':'The essence','ess.p1t':'Natural origin','ess.p1d':'Carefully selected ingredients, drawn from nature.','ess.p2t':'0 calorie','ess.p2d':'All the sweetness, without the sugar. No guilt.','ess.p3t':'Refined in Switzerland','ess.p3d':'Swiss craftsmanship and technology, refined into a single gesture.','ess.p4t':'Positive impact','ess.p4d':'Choosing it actively cuts emissions — no sugar supply chain, no washed spoon — about <span class="co2">8 g of CO₂</span> avoided per cup.','rit.eyebrow':'The ritual','rit.h2':'A simple gesture.<br><span>A rare experience.</span>','rit.s1t':'Place','rit.s1d':'Slip your SwitZero into your hot coffee or tea.','rit.s2t':'Stir','rit.s2d':'A few moments are enough: around 5 seconds for the equivalent of half a sachet of ordinary sugar, up to 10 seconds for the gentle effect of a full sachet (4 g).','rit.s3t':'Savour','rit.s3d':'The aroma first. Then the sweetness, precise and just.','cfg.eyebrow':'Bespoke · B2B','cfg.h2':'Your brand,<br><span>our expertise.</span>','cfg.p':'Design your white-label packaging. Choose your sachet shade and your logo colour from the RAL chart — the preview updates live.','cfg.sachetLabel':'Sachet colour','cfg.sachetHint':'The shade of the packaging that will carry your brand.','cfg.logoLabel':'Logo colour','cfg.logoHint':'Your logo colour, from your RAL code.','cfg.yourlogo':'Your Logo','cfg.desc':'Natural Sweetener Stirrer · 0 Calorie','cfg.credit':'Designed by SwitZero','mai.eyebrow':'The house','mai.big':'Born on the shores of Lake Geneva, SwitZero unites Swiss rigour with the elegance of an everyday object — <strong>pure by nature, refined in Switzerland.</strong>','mai.loc':'1814 La Tour-de-Peilz · Switzerland','con.eyebrow':'Coming soon','con.h2':'Be the first to know.','con.p':'Leave us your email to discover SwitZero first.','con.placeholder':'Your email address','con.btn':'Subscribe','con.thanks':'Thank you ✓','con.note':'HoReCa professionals — contact us: hello@switzero.com','ftr.legal':'© 2026 SwitZero · Crafted in Switzerland'},
+fr:{'nav.manifeste':'Manifeste','nav.essence':'Essence','nav.rituel':'Rituel','nav.config':'Configurateur','nav.contact':'Contact','hero.eyebrow':'Pur par nature · Raffiné en Suisse','hero.tagline':'Touilleur Sucrant Naturel','hero.zero':'0 Calorie','hero.scroll':'Découvrir','man.eyebrow':'Manifeste','man.quote':'« Goûtez d’abord le café.<br><em>La douceur vient après.</em> »','man.sub':'SwitZero ne masque rien. Il accompagne. Une douceur naturelle, discrète, qui laisse votre tasse s’exprimer pleinement — sans sucre, sans calorie, sans compromis.','ess.eyebrow':'L’essence','ess.p1t':'Origine naturelle','ess.p1d':'Des ingrédients sélectionnés avec exigence, issus de la nature.','ess.p2t':'0 calorie','ess.p2d':'Toute la douceur, sans le sucre. Sans culpabilité.','ess.p3t':'Affiné en Suisse','ess.p3d':'Le savoir-faire et la technologie suisses, affinés en un seul geste.','ess.p4t':'Impact positif','ess.p4d':'Le choisir réduit activement les émissions — plus de filière du sucre, ni cuillère à laver — environ <span class="co2">8 g de CO₂</span> évités par tasse.','rit.eyebrow':'Le rituel','rit.h2':'Un geste simple.<br><span>Une expérience rare.</span>','rit.s1t':'Déposez','rit.s1d':'Glissez votre SwitZero dans votre café ou votre thé chaud.','rit.s2t':'Tournez','rit.s2d':'Quelques instants suffisent : environ 5 secondes pour l’équivalent d’un demi-sachet de sucre ordinaire, jusqu’à 10 secondes pour l’effet tout en douceur d’un sachet entier (4 g).','rit.s3t':'Savourez','rit.s3d':'L’arôme d’abord. Puis la douceur, juste et précise.','cfg.eyebrow':'Sur mesure · B2B','cfg.h2':'Votre marque,<br><span>notre savoir-faire.</span>','cfg.p':'Composez votre packaging en marque blanche. Choisissez la teinte de votre sachet et la couleur de votre logo selon votre nuancier RAL — l’aperçu se met à jour en direct.','cfg.sachetLabel':'Couleur du sachet','cfg.sachetHint':'La teinte de l’emballage qui portera votre marque.','cfg.logoLabel':'Couleur du logo','cfg.logoHint':'La couleur de votre logo, selon votre code RAL.','cfg.yourlogo':'Votre logo','cfg.desc':'Touilleur Sucrant Naturel · 0 Calorie','cfg.credit':'Design par SwitZero','mai.eyebrow':'La maison','mai.big':'Née au bord du Léman, SwitZero réunit la rigueur suisse et l’élégance d’un objet du quotidien — <strong>pur par nature, raffiné en Suisse.</strong>','mai.loc':'1814 La Tour-de-Peilz · Suisse','con.eyebrow':'Bientôt','con.h2':'Soyez les premiers informés.','con.p':'Laissez-nous votre adresse pour découvrir SwitZero en avant-première.','con.placeholder':'Votre adresse e-mail','con.btn':'S’inscrire','con.thanks':'Merci ✓','con.note':'Professionnels HoReCa — contactez-nous : hello@switzero.com','ftr.legal':'© 2026 SwitZero · Conçu en Suisse'},
+de:{'nav.manifeste':'Manifest','nav.essence':'Essenz','nav.rituel':'Ritual','nav.config':'Konfigurator','nav.contact':'Kontakt','hero.eyebrow':'Von Natur aus rein · Veredelt in der Schweiz','hero.tagline':'Natürlicher Süßstoff-Rührstab','hero.zero':'0 Kalorien','hero.scroll':'Entdecken','man.eyebrow':'Manifest','man.quote':'„Schmecken Sie zuerst den Kaffee.<br><em>Die Süße kommt danach.</em>“','man.sub':'SwitZero verdeckt nichts. Es begleitet. Eine natürliche, dezente Süße, die Ihre Tasse voll zur Geltung bringt — ohne Zucker, ohne Kalorien, ohne Kompromisse.','ess.eyebrow':'Die Essenz','ess.p1t':'Natürlicher Ursprung','ess.p1d':'Sorgfältig ausgewählte Zutaten aus der Natur.','ess.p2t':'0 Kalorien','ess.p2d':'Die volle Süße, ohne den Zucker. Ohne schlechtes Gewissen.','ess.p3t':'In der Schweiz veredelt','ess.p3d':'Schweizer Handwerkskunst und Technologie, verfeinert zu einer einzigen Geste.','ess.p4t':'Positive Wirkung','ess.p4d':'Es zu wählen senkt aktiv die Emissionen — keine Zucker-Lieferkette, kein gespültes Löffelchen — rund <span class="co2">8 g CO₂</span> pro Tasse vermieden.','rit.eyebrow':'Das Ritual','rit.h2':'Eine einfache Geste.<br><span>Ein seltenes Erlebnis.</span>','rit.s1t':'Eintauchen','rit.s1d':'Geben Sie Ihren SwitZero in Ihren heißen Kaffee oder Tee.','rit.s2t':'Umrühren','rit.s2d':'Wenige Augenblicke genügen: etwa 5 Sekunden für das Äquivalent eines halben Päckchens gewöhnlichen Zuckers, bis zu 10 Sekunden für die sanfte Wirkung eines ganzen Päckchens (4 g).','rit.s3t':'Genießen','rit.s3d':'Zuerst das Aroma. Dann die Süße, genau und präzise.','cfg.eyebrow':'Maßgeschneidert · B2B','cfg.h2':'Ihre Marke,<br><span>unser Know-how.</span>','cfg.p':'Gestalten Sie Ihre White-Label-Verpackung. Wählen Sie Ihren Sachet-Ton und Ihre Logo-Farbe nach Ihrer RAL-Karte — die Vorschau aktualisiert sich live.','cfg.sachetLabel':'Sachet-Farbe','cfg.sachetHint':'Der Farbton der Verpackung, die Ihre Marke trägt.','cfg.logoLabel':'Logo-Farbe','cfg.logoHint':'Ihre Logo-Farbe, nach Ihrem RAL-Code.','cfg.yourlogo':'Ihr Logo','cfg.desc':'Natürlicher Süßstoff-Rührstab · 0 Kalorien','cfg.credit':'Design von SwitZero','mai.eyebrow':'Das Haus','mai.big':'Am Ufer des Genfersees entstanden, vereint SwitZero Schweizer Präzision mit der Eleganz eines Alltagsobjekts — <strong>von Natur aus rein, veredelt in der Schweiz.</strong>','mai.loc':'1814 La Tour-de-Peilz · Schweiz','con.eyebrow':'Demnächst','con.h2':'Erfahren Sie es als Erste.','con.p':'Hinterlassen Sie uns Ihre E-Mail, um SwitZero als Erste zu entdecken.','con.placeholder':'Ihre E-Mail-Adresse','con.btn':'Anmelden','con.thanks':'Danke ✓','con.note':'HoReCa-Profis — kontaktieren Sie uns: hello@switzero.com','ftr.legal':'© 2026 SwitZero · Hergestellt in der Schweiz'},
+es:{'nav.manifeste':'Manifiesto','nav.essence':'Esencia','nav.rituel':'Ritual','nav.config':'Configurador','nav.contact':'Contacto','hero.eyebrow':'Puro por naturaleza · Refinado en Suiza','hero.tagline':'Agitador Edulcorante Natural','hero.zero':'0 Caloría','hero.scroll':'Descubrir','man.eyebrow':'Manifiesto','man.quote':'«Saboree primero el café.<br><em>El dulzor llega después.</em>»','man.sub':'SwitZero no enmascara nada. Acompaña. Un dulzor natural y discreto que deja que su taza se exprese plenamente — sin azúcar, sin calorías, sin concesiones.','ess.eyebrow':'La esencia','ess.p1t':'Origen natural','ess.p1d':'Ingredientes cuidadosamente seleccionados, procedentes de la naturaleza.','ess.p2t':'0 caloría','ess.p2d':'Todo el dulzor, sin el azúcar. Sin culpa.','ess.p3t':'Refinado en Suiza','ess.p3d':'Saber hacer y tecnología suizos, refinados en un solo gesto.','ess.p4t':'Impacto positivo','ess.p4d':'Elegirlo reduce activamente las emisiones — sin cadena del azúcar, sin cuchara que lavar — unos <span class="co2">8 g de CO₂</span> evitados por taza.','rit.eyebrow':'El ritual','rit.h2':'Un gesto simple.<br><span>Una experiencia única.</span>','rit.s1t':'Coloque','rit.s1d':'Deslice su SwitZero en su café o té caliente.','rit.s2t':'Remueva','rit.s2d':'Bastan unos instantes: unos 5 segundos para el equivalente de medio sobre de azúcar común, hasta 10 segundos para el efecto suave de un sobre entero (4 g).','rit.s3t':'Saboree','rit.s3d':'Primero el aroma. Luego el dulzor, justo y preciso.','cfg.eyebrow':'A medida · B2B','cfg.h2':'Su marca,<br><span>nuestro saber hacer.</span>','cfg.p':'Diseñe su embalaje de marca blanca. Elija el tono de su sobre y el color de su logotipo según su carta RAL — la vista previa se actualiza en directo.','cfg.sachetLabel':'Color del sobre','cfg.sachetHint':'El tono del embalaje que llevará su marca.','cfg.logoLabel':'Color del logotipo','cfg.logoHint':'El color de su logotipo, según su código RAL.','cfg.yourlogo':'Su logotipo','cfg.desc':'Agitador Edulcorante Natural · 0 Caloría','cfg.credit':'Diseño de SwitZero','mai.eyebrow':'La casa','mai.big':'Nacida a orillas del lago Lemán, SwitZero une el rigor suizo con la elegancia de un objeto cotidiano — <strong>puro por naturaleza, refinado en Suiza.</strong>','mai.loc':'1814 La Tour-de-Peilz · Suiza','con.eyebrow':'Próximamente','con.h2':'Sea el primero en saberlo.','con.p':'Déjenos su correo para descubrir SwitZero en primicia.','con.placeholder':'Su correo electrónico','con.btn':'Suscribirse','con.thanks':'Gracias ✓','con.note':'Profesionales HoReCa — contáctenos: hello@switzero.com','ftr.legal':'© 2026 SwitZero · Elaborado en Suiza'},
+it:{'nav.manifeste':'Manifesto','nav.essence':'Essenza','nav.rituel':'Rituale','nav.config':'Configuratore','nav.contact':'Contatto','hero.eyebrow':'Puro per natura · Raffinato in Svizzera','hero.tagline':'Bastoncino Dolcificante Naturale','hero.zero':'0 Caloria','hero.scroll':'Scopri','man.eyebrow':'Manifesto','man.quote':'«Assapora prima il caffè.<br><em>La dolcezza arriva dopo.</em>»','man.sub':'SwitZero non maschera nulla. Accompagna. Una dolcezza naturale e discreta che lascia esprimere pienamente la tua tazza — senza zucchero, senza calorie, senza compromessi.','ess.eyebrow':'L’essenza','ess.p1t':'Origine naturale','ess.p1d':'Ingredienti selezionati con cura, provenienti dalla natura.','ess.p2t':'0 caloria','ess.p2d':'Tutta la dolcezza, senza lo zucchero. Senza sensi di colpa.','ess.p3t':'Raffinato in Svizzera','ess.p3d':'Maestria e tecnologia svizzere, raffinate in un solo gesto.','ess.p4t':'Impatto positivo','ess.p4d':'Sceglierlo riduce attivamente le emissioni — niente filiera dello zucchero, nessun cucchiaino da lavare — circa <span class="co2">8 g di CO₂</span> evitati per tazza.','rit.eyebrow':'Il rituale','rit.h2':'Un gesto semplice.<br><span>Un’esperienza rara.</span>','rit.s1t':'Immergi','rit.s1d':'Fai scivolare il tuo SwitZero nel caffè o nel tè caldo.','rit.s2t':'Mescola','rit.s2d':'Bastano pochi istanti: circa 5 secondi per l’equivalente di mezza bustina di zucchero comune, fino a 10 secondi per l’effetto tutto in dolcezza di una bustina intera (4 g).','rit.s3t':'Assapora','rit.s3d':'Prima l’aroma. Poi la dolcezza, giusta e precisa.','cfg.eyebrow':'Su misura · B2B','cfg.h2':'Il tuo marchio,<br><span>il nostro savoir-faire.</span>','cfg.p':'Componi il tuo packaging white-label. Scegli la tonalità della bustina e il colore del logo dalla tua scala RAL — l’anteprima si aggiorna in tempo reale.','cfg.sachetLabel':'Colore della bustina','cfg.sachetHint':'La tonalità della confezione che porterà il tuo marchio.','cfg.logoLabel':'Colore del logo','cfg.logoHint':'Il colore del tuo logo, secondo il codice RAL.','cfg.yourlogo':'Il tuo logo','cfg.desc':'Bastoncino Dolcificante Naturale · 0 Caloria','cfg.credit':'Design di SwitZero','mai.eyebrow':'La maison','mai.big':'Nata sulle rive del Lago di Ginevra, SwitZero unisce il rigore svizzero all’eleganza di un oggetto quotidiano — <strong>puro per natura, raffinato in Svizzera.</strong>','mai.loc':'1814 La Tour-de-Peilz · Svizzera','con.eyebrow':'Presto','con.h2':'Sii il primo a saperlo.','con.p':'Lasciaci la tua email per scoprire SwitZero in anteprima.','con.placeholder':'Il tuo indirizzo email','con.btn':'Iscriviti','con.thanks':'Grazie ✓','con.note':'Professionisti HoReCa — contattaci: hello@switzero.com','ftr.legal':'© 2026 SwitZero · Creato in Svizzera'},
+ja:{'nav.manifeste':'理念','nav.essence':'本質','nav.rituel':'儀式','nav.config':'カスタマイズ','nav.contact':'お問い合わせ','hero.eyebrow':'自然のままに · スイスで洗練','hero.tagline':'ナチュラル甘味料マドラー','hero.zero':'0 カロリー','hero.scroll':'見る','man.eyebrow':'理念','man.quote':'「まずコーヒーを味わう。<br><em>甘さは、その後に。</em>」','man.sub':'SwitZeroは何も隠しません。寄り添います。砂糖もカロリーも妥協もなく、自然で控えめな甘さがあなたの一杯を存分に引き立てます。','ess.eyebrow':'本質','ess.p1t':'自然由来','ess.p1d':'自然から選び抜かれた厳選素材。','ess.p2t':'0 カロリー','ess.p2d':'砂糖なしの、すべての甘さ。罪悪感なく。','ess.p3t':'スイスで洗練','ess.p3d':'スイスの職人技とテクノロジーを、ひとつの所作に凝縮。','ess.p4t':'ポジティブな効果','ess.p4d':'選ぶだけで排出を積極的に削減 — 砂糖のサプライチェーンも、洗うスプーンも不要 — 1杯あたり約<span class="co2">8gのCO₂</span>を回避。','rit.eyebrow':'儀式','rit.h2':'ひとつの所作。<br><span>稀有な体験。</span>','rit.s1t':'入れる','rit.s1d':'温かいコーヒーや紅茶にSwitZeroをそっと入れます。','rit.s2t':'混ぜる','rit.s2d':'ほんの数瞬で十分：約5秒で普通の砂糖の半包分に相当、最大10秒で1包（4g）のやわらかな甘さ。','rit.s3t':'味わう','rit.s3d':'まず香り。そして、正確で心地よい甘さ。','cfg.eyebrow':'オーダーメイド · B2B','cfg.h2':'あなたのブランド、<br><span>私たちの技術。</span>','cfg.p':'ホワイトラベルのパッケージをデザイン。RALカラーチャートから個包装の色とロゴの色をお選びください。プレビューはリアルタイムで更新されます。','cfg.sachetLabel':'個包装の色','cfg.sachetHint':'あなたのブランドをまとう包装の色合い。','cfg.logoLabel':'ロゴの色','cfg.logoHint':'RALコードによるロゴの色。','cfg.yourlogo':'あなたのロゴ','cfg.desc':'ナチュラル甘味料マドラー · 0 カロリー','cfg.credit':'SwitZero デザイン','mai.eyebrow':'メゾン','mai.big':'レマン湖のほとりで生まれたSwitZeroは、スイスの厳格さと日常の道具の優雅さを結びます — <strong>自然のままに、スイスで洗練。</strong>','mai.loc':'1814 ラ・トゥール＝ド＝ペル · スイス','con.eyebrow':'まもなく','con.h2':'いちばんに、お知らせします。','con.p':'メールアドレスをご登録いただくと、SwitZeroをいち早くお届けします。','con.placeholder':'メールアドレス','con.btn':'登録','con.thanks':'ありがとう ✓','con.note':'HoReCaの専門家の方 — お問い合わせ：hello@switzero.com','ftr.legal':'© 2026 SwitZero · スイス製'},
+zh:{'nav.manifeste':'理念','nav.essence':'精髓','nav.rituel':'仪式','nav.config':'定制','nav.contact':'联系','hero.eyebrow':'天然本真 · 瑞士精制','hero.tagline':'天然甜味搅拌棒','hero.zero':'0 卡路里','hero.scroll':'探索','man.eyebrow':'理念','man.quote':'“先品咖啡，<br><em>甜味随后而来。</em>”','man.sub':'SwitZero 不掩盖任何风味，只为陪衬。天然而含蓄的甜，让您的那杯尽情舒展——无糖、无热量、无妥协。','ess.eyebrow':'精髓','ess.p1t':'天然来源','ess.p1d':'精心甄选、源自自然的原料。','ess.p2t':'0 卡路里','ess.p2d':'尽享甜味，却无糖分，亦无负担。','ess.p3t':'瑞士精制','ess.p3d':'瑞士工艺与技术，凝练于一个动作。','ess.p4t':'正向影响','ess.p4d':'选择它即主动减排——免去制糖供应链，也无需清洗汤匙——每杯约规避 <span class="co2">8 克 CO₂</span>。','rit.eyebrow':'仪式','rit.h2':'一个简单的动作。<br><span>一段稀有的体验。</span>','rit.s1t':'放入','rit.s1d':'将您的 SwitZero 轻放入热咖啡或热茶中。','rit.s2t':'搅拌','rit.s2d':'片刻足矣：约 5 秒相当于半袋普通糖，最多 10 秒呈现一整袋（4 克）的柔和甜意。','rit.s3t':'品味','rit.s3d':'先是香气，随后是恰到好处的甜。','cfg.eyebrow':'量身定制 · B2B','cfg.h2':'您的品牌，<br><span>我们的工艺。</span>','cfg.p':'设计您的白标包装。依据 RAL 色卡选择包装色与标志色——预览实时更新。','cfg.sachetLabel':'包装颜色','cfg.sachetHint':'承载您品牌的包装色调。','cfg.logoLabel':'标志颜色','cfg.logoHint':'依据 RAL 代码的标志颜色。','cfg.yourlogo':'您的标志','cfg.desc':'天然甜味搅拌棒 · 0 卡路里','cfg.credit':'由 SwitZero 设计','mai.eyebrow':'品牌','mai.big':'诞生于莱芒湖畔，SwitZero 将瑞士的严谨与日常之物的优雅融为一体——<strong>天然本真，瑞士精制。</strong>','mai.loc':'1814 拉图尔德佩勒 · 瑞士','con.eyebrow':'即将推出','con.h2':'抢先获知。','con.p':'留下您的邮箱，率先体验 SwitZero。','con.placeholder':'您的电子邮箱','con.btn':'订阅','con.thanks':'谢谢 ✓','con.note':'HoReCa 专业人士——联系我们：hello@switzero.com','ftr.legal':'© 2026 SwitZero · 瑞士制造'},
+ru:{'nav.manifeste':'Манифест','nav.essence':'Суть','nav.rituel':'Ритуал','nav.config':'Конфигуратор','nav.contact':'Контакт','hero.eyebrow':'Чистота от природы · Утончённость из Швейцарии','hero.tagline':'Натуральная мешалка-подсластитель','hero.zero':'0 калорий','hero.scroll':'Открыть','man.eyebrow':'Манифест','man.quote':'«Сначала вкус кофе.<br><em>Сладость приходит после.</em>»','man.sub':'SwitZero ничего не маскирует. Он сопровождает. Натуральная, деликатная сладость, позволяющая вашей чашке раскрыться сполна — без сахара, без калорий, без компромиссов.','ess.eyebrow':'Суть','ess.p1t':'Натуральное происхождение','ess.p1d':'Тщательно отобранные ингредиенты, дарованные природой.','ess.p2t':'0 калорий','ess.p2d':'Вся сладость — без сахара. Без чувства вины.','ess.p3t':'Доработано в Швейцарии','ess.p3d':'Швейцарское мастерство и технологии, отточенные до одного жеста.','ess.p4t':'Положительный эффект','ess.p4d':'Его выбор активно сокращает выбросы — без сахарной цепочки и ложки для мытья — около <span class="co2">8 г CO₂</span> на чашку.','rit.eyebrow':'Ритуал','rit.h2':'Простой жест.<br><span>Редкое впечатление.</span>','rit.s1t':'Опустите','rit.s1d':'Опустите SwitZero в горячий кофе или чай.','rit.s2t':'Размешайте','rit.s2d':'Достаточно мгновения: около 5 секунд — эквивалент половины пакетика обычного сахара, до 10 секунд для мягкого эффекта целого пакетика (4 г).','rit.s3t':'Насладитесь','rit.s3d':'Сначала аромат. Затем сладость — точная и выверенная.','cfg.eyebrow':'Под заказ · B2B','cfg.h2':'Ваш бренд,<br><span>наше мастерство.</span>','cfg.p':'Создайте упаковку под собственным брендом. Выберите оттенок саше и цвет логотипа по палитре RAL — превью обновляется в реальном времени.','cfg.sachetLabel':'Цвет саше','cfg.sachetHint':'Оттенок упаковки, которая понесёт ваш бренд.','cfg.logoLabel':'Цвет логотипа','cfg.logoHint':'Цвет вашего логотипа по коду RAL.','cfg.yourlogo':'Ваш логотип','cfg.desc':'Натуральная мешалка-подсластитель · 0 калорий','cfg.credit':'Дизайн SwitZero','mai.eyebrow':'Дом','mai.big':'Рождённый на берегу Женевского озера, SwitZero соединяет швейцарскую строгость с изяществом повседневной вещи — <strong>чистый от природы, утончённый в Швейцарии.</strong>','mai.loc':'1814 Ла-Тур-де-Пельз · Швейцария','con.eyebrow':'Скоро','con.h2':'Узнайте первыми.','con.p':'Оставьте свой e-mail, чтобы первыми открыть SwitZero.','con.placeholder':'Ваш адрес e-mail','con.btn':'Подписаться','con.thanks':'Спасибо ✓','con.note':'Профессионалам HoReCa — пишите нам: hello@switzero.com','ftr.legal':'© 2026 SwitZero · Сделано в Швейцарии'},
+ar:{'nav.manifeste':'البيان','nav.essence':'الجوهر','nav.rituel':'الطقس','nav.config':'التخصيص','nav.contact':'تواصل','hero.eyebrow':'نقاء بطبيعته · صُقل في سويسرا','hero.tagline':'محرّك تحلية طبيعي','hero.zero':'0 سعرة حرارية','hero.scroll':'اكتشف','man.eyebrow':'البيان','man.quote':'«تذوّق القهوة أولاً.<br><em>تأتي الحلاوة بعد ذلك.</em>»','man.sub':'لا يُخفي SwitZero شيئاً، بل يرافق. حلاوة طبيعية رقيقة تترك فنجانك يعبّر عن نفسه بالكامل — دون سكر، دون سعرات، دون أي تنازل.','ess.eyebrow':'الجوهر','ess.p1t':'أصل طبيعي','ess.p1d':'مكوّنات مختارة بعناية، مستمدّة من الطبيعة.','ess.p2t':'0 سعرة حرارية','ess.p2d':'كل الحلاوة، دون السكر. ودون شعور بالذنب.','ess.p3t':'صُقل في سويسرا','ess.p3d':'حرفية وتقنية سويسرية، مصقولة في حركة واحدة.','ess.p4t':'أثر إيجابي','ess.p4d':'اختياره يقلّل الانبعاثات فعلياً — بلا سلسلة إمداد للسكر ولا ملعقة تُغسل — تجنّب نحو <span class="co2">8 غ من CO₂</span> لكل فنجان.','rit.eyebrow':'الطقس','rit.h2':'لمسة بسيطة.<br><span>تجربة نادرة.</span>','rit.s1t':'ضَع','rit.s1d':'أدخِل SwitZero في قهوتك أو شايك الساخن.','rit.s2t':'حرّك','rit.s2d':'تكفي لحظات قليلة: نحو 5 ثوانٍ تعادل نصف كيس من السكر العادي، وحتى 10 ثوانٍ للأثر الناعم لكيس كامل (4 غ).','rit.s3t':'تذوّق','rit.s3d':'العطر أولاً. ثم الحلاوة، دقيقة ومتزنة.','cfg.eyebrow':'حسب الطلب · B2B','cfg.h2':'علامتك التجارية،<br><span>وخبرتنا نحن.</span>','cfg.p':'صمّم تغليفك بعلامتك الخاصة. اختر لون الكيس ولون شعارك من بطاقة ألوان RAL — تتحدّث المعاينة مباشرةً.','cfg.sachetLabel':'لون الكيس','cfg.sachetHint':'درجة لون التغليف الذي سيحمل علامتك.','cfg.logoLabel':'لون الشعار','cfg.logoHint':'لون شعارك وفق رمز RAL.','cfg.yourlogo':'شعارك','cfg.desc':'محرّك تحلية طبيعي · 0 سعرة حرارية','cfg.credit':'تصميم SwitZero','mai.eyebrow':'الدار','mai.big':'وُلِد على ضفاف بحيرة جنيف، يجمع SwitZero بين الصرامة السويسرية وأناقة غرضٍ يومي — <strong>نقيٌّ بطبيعته، مصقولٌ في سويسرا.</strong>','mai.loc':'1814 لا تور-دو-بيل · سويسرا','con.eyebrow':'قريباً','con.h2':'كن أوّل من يعلم.','con.p':'اترك لنا بريدك الإلكتروني لاكتشاف SwitZero أولاً.','con.placeholder':'بريدك الإلكتروني','con.btn':'اشترك','con.thanks':'شكراً ✓','con.note':'محترفو HoReCa — تواصلوا معنا: hello@switzero.com','ftr.legal':'© 2026 SwitZero · صُنع في سويسرا'}
+};
+const LANG_LABEL={en:'EN',fr:'FR',de:'DE',es:'ES',it:'IT',ja:'日本語',zh:'中文',ru:'РУ',ar:'ع'};
+const LAB_I18N = {"en": {"lab.eyebrow": "Our laboratory", "lab.h2": "Sweetness, at the right moment.", "lab.p": "Our laboratory has developed a naturally sourced formula — innovative and unique — that doesn’t mask the aroma of coffee and tea: it reveals it and amplifies its effect. When sugar releases at once, together with the aroma, and smothers it, our sweetness knows how to wait — it accompanies only the bitterness, the kind that comes after the aromas. No calories, no blood-sugar spike: a way to revolutionise the hot drink and <strong>keep only the pleasure</strong>.", "lab.legSugar": "Sugar", "lab.legAroma": "Aroma", "lab.legBitter": "Bitterness", "lab.annAroma": "Aroma first", "lab.annPeak": "Sweetness at peak bitterness", "lab.caption": "Illustrative diagram", "lab.stat1": "0 calorie", "lab.stat1sub": "vs ~16 kcal for sugar", "lab.stat2": "No blood-sugar spike", "lab.stat3": "Aromas preserved", "lab.stat3sub": "aroma before sweetness", "lab.axisI": "Intensity", "lab.axisT": "On the palate →", "nav.lab": "Laboratory", "man.sub": "SwitZero masks nothing. It accompanies. A natural, discreet sweetness that lets your cup — coffee as much as tea — express itself fully: no sugar, no calories, no compromise.", "lab.stat4": "No aftertaste", "lab.stat4sub": "no bitterness, no metallic note"}, "fr": {"lab.eyebrow": "Notre laboratoire", "lab.h2": "La douceur, au moment juste.", "lab.p": "Notre laboratoire a mis au point une formule d’origine naturelle, à la fois innovante et unique, qui ne masque pas l’arôme du café et du thé : elle le révèle et en amplifie l’effet. Quand le sucre se libère d’emblée, en même temps que l’arôme, et l’étouffe, notre douceur sait attendre — elle n’accompagne que l’amertume, celle qui vient après les arômes. Sans calorie, sans pic de glycémie : de quoi révolutionner la boisson chaude pour <strong>n’en garder que le plaisir</strong>.", "lab.legSugar": "Sucre", "lab.legAroma": "Arôme", "lab.legBitter": "Amertume", "lab.annAroma": "L’arôme d’abord", "lab.annPeak": "Douceur au pic d’amertume", "lab.caption": "Schéma illustratif", "lab.stat1": "0 calorie", "lab.stat1sub": "vs ~16 kcal pour le sucre", "lab.stat2": "Aucun pic de glycémie", "lab.stat3": "Arômes préservés", "lab.stat3sub": "l’arôme avant la douceur", "lab.axisI": "Intensité", "lab.axisT": "En bouche →", "nav.lab": "Laboratoire", "man.sub": "SwitZero ne masque rien. Il accompagne. Une douceur naturelle et discrète qui laisse votre tasse — café comme thé — s’exprimer pleinement : sans sucre, sans calorie, sans compromis.", "lab.stat4": "Sans arrière-goût", "lab.stat4sub": "ni amertume, ni note métallique"}, "de": {"lab.eyebrow": "Unser Labor", "lab.h2": "Süße im richtigen Moment.", "lab.p": "Unser Labor hat eine natürlich gewonnene Formel entwickelt — innovativ und einzigartig —, die das Aroma von Kaffee und Tee nicht überdeckt: Sie bringt es zur Geltung und verstärkt seine Wirkung. Während Zucker sofort einsetzt, zugleich mit dem Aroma, und es erstickt, weiß unsere Süße zu warten — sie begleitet nur die Bitterkeit, jene, die nach den Aromen kommt. Ohne Kalorien, ohne Blutzuckerspitze: das Heißgetränk neu gedacht, um <strong>nur den Genuss zu bewahren</strong>.", "lab.legSugar": "Zucker", "lab.legAroma": "Aroma", "lab.legBitter": "Bitterkeit", "lab.annAroma": "Zuerst das Aroma", "lab.annPeak": "Süße am Bitterkeits-Höhepunkt", "lab.caption": "Schematische Darstellung", "lab.stat1": "0 Kalorien", "lab.stat1sub": "vs ~16 kcal bei Zucker", "lab.stat2": "Keine Blutzuckerspitze", "lab.stat3": "Aromen bewahrt", "lab.stat3sub": "Aroma vor Süße", "lab.axisI": "Intensität", "lab.axisT": "Im Mund →", "nav.lab": "Labor", "man.sub": "SwitZero überdeckt nichts. Es begleitet. Eine natürliche, dezente Süße, die Ihre Tasse — Kaffee wie Tee — voll zur Geltung bringt: ohne Zucker, ohne Kalorien, ohne Kompromiss.", "lab.stat4": "Kein Nachgeschmack", "lab.stat4sub": "keine Bitterkeit, keine metallische Note"}, "es": {"lab.eyebrow": "Nuestro laboratorio", "lab.h2": "El dulzor, en el momento justo.", "lab.p": "Nuestro laboratorio ha creado una fórmula de origen natural —innovadora y única— que no enmascara el aroma del café y del té: lo revela y amplifica su efecto. Cuando el azúcar se libera de golpe, al mismo tiempo que el aroma, y lo ahoga, nuestro dulzor sabe esperar — solo acompaña al amargor, ese que llega después de los aromas. Sin calorías, sin pico de glucemia: una forma de revolucionar la bebida caliente para <strong>conservar solo el placer</strong>.", "lab.legSugar": "Azúcar", "lab.legAroma": "Aroma", "lab.legBitter": "Amargor", "lab.annAroma": "Primero el aroma", "lab.annPeak": "Dulzor en el pico de amargor", "lab.caption": "Esquema ilustrativo", "lab.stat1": "0 caloría", "lab.stat1sub": "vs ~16 kcal del azúcar", "lab.stat2": "Sin pico de glucemia", "lab.stat3": "Aromas preservados", "lab.stat3sub": "el aroma antes que el dulzor", "lab.axisI": "Intensidad", "lab.axisT": "En boca →", "nav.lab": "Laboratorio", "man.sub": "SwitZero no enmascara nada. Acompaña. Un dulzor natural y discreto que deja que tu taza — café o té — se exprese plenamente: sin azúcar, sin calorías, sin concesiones.", "lab.stat4": "Sin regusto", "lab.stat4sub": "ni amargor ni nota metálica"}, "it": {"lab.eyebrow": "Il nostro laboratorio", "lab.h2": "La dolcezza, al momento giusto.", "lab.p": "Il nostro laboratorio ha messo a punto una formula di origine naturale — innovativa e unica — che non maschera l’aroma del caffè e del tè: lo rivela e ne amplifica l’effetto. Quando lo zucchero si libera subito, insieme all’aroma, e lo soffoca, la nostra dolcezza sa attendere — accompagna solo l’amarezza, quella che arriva dopo gli aromi. Senza calorie, senza picco glicemico: un modo di rivoluzionare la bevanda calda per <strong>conservarne solo il piacere</strong>.", "lab.legSugar": "Zucchero", "lab.legAroma": "Aroma", "lab.legBitter": "Amarezza", "lab.annAroma": "Prima l’aroma", "lab.annPeak": "Dolcezza al picco d’amarezza", "lab.caption": "Schema illustrativo", "lab.stat1": "0 caloria", "lab.stat1sub": "vs ~16 kcal dello zucchero", "lab.stat2": "Nessun picco glicemico", "lab.stat3": "Aromi preservati", "lab.stat3sub": "l’aroma prima della dolcezza", "lab.axisI": "Intensità", "lab.axisT": "In bocca →", "nav.lab": "Laboratorio", "man.sub": "SwitZero non maschera nulla. Accompagna. Una dolcezza naturale e discreta che lascia esprimere pienamente la tua tazza — caffè come tè: senza zucchero, senza calorie, senza compromessi.", "lab.stat4": "Nessun retrogusto", "lab.stat4sub": "né amaro né nota metallica"}, "ja": {"lab.eyebrow": "私たちのラボ", "lab.h2": "甘さは、ちょうど良い瞬間に。", "lab.p": "私たちのラボは、革新的で唯一無二の、天然由来の処方を開発しました。コーヒーや紅茶の香りを覆い隠すのではなく、引き立て、その効果を高めます。砂糖が香りと同時に一気に広がり、それを押しつぶしてしまう一方で、私たちの甘さは待つことを知っています — 香りのあとに訪れる苦みだけに寄り添うのです。カロリーゼロ、血糖値の急上昇なし。温かい一杯を変え、<strong>残すのは、よろこびだけ</strong>。", "lab.legSugar": "砂糖", "lab.legAroma": "香り", "lab.legBitter": "苦み", "lab.annAroma": "まず香り", "lab.annPeak": "苦みのピークで甘さ", "lab.caption": "イメージ図", "lab.stat1": "0 カロリー", "lab.stat1sub": "砂糖は約 16 kcal", "lab.stat2": "血糖値の急上昇なし", "lab.stat3": "香りはそのまま", "lab.stat3sub": "甘さの前に香り", "lab.axisI": "強度", "lab.axisT": "口の中で →", "nav.lab": "ラボ", "man.sub": "SwitZeroは何も覆い隠しません。寄り添うのです。コーヒーも紅茶も、カップ本来の味を存分に引き立てる、自然で控えめな甘さ——砂糖なし、カロリーなし、妥協なし。", "lab.stat4": "後味なし", "lab.stat4sub": "苦みも金属的な風味もなし"}, "zh": {"lab.eyebrow": "我们的实验室", "lab.h2": "甜味，恰逢其时。", "lab.p": "我们的实验室研制出一种天然来源、创新而独一无二的配方：它不掩盖咖啡与茶的香气，而是将其彰显并放大。当糖与香气同时迸发、并将其压制时，我们的甜意懂得等待——只陪伴那随香气之后到来的苦味。零卡路里，无血糖飙升：以此革新热饮，<strong>只留下纯粹的愉悦</strong>。", "lab.legSugar": "糖", "lab.legAroma": "香气", "lab.legBitter": "苦味", "lab.annAroma": "香气先行", "lab.annPeak": "苦味高峰处的甜", "lab.caption": "示意图", "lab.stat1": "0 卡路里", "lab.stat1sub": "糖约 16 千卡", "lab.stat2": "无血糖飙升", "lab.stat3": "香气得以保留", "lab.stat3sub": "先香气，后甜味", "lab.axisI": "强度", "lab.axisT": "入口之后 →", "nav.lab": "实验室", "man.sub": "SwitZero 不掩盖任何风味，只是陪衬。一种自然而内敛的甜味，让你的咖啡或茶充分展现本味——无糖、无热量、不妥协。", "lab.stat4": "无余味", "lab.stat4sub": "无苦味，无金属味"}, "ru": {"lab.eyebrow": "Наша лаборатория", "lab.h2": "Сладость — точно в нужный момент.", "lab.p": "Наша лаборатория разработала формулу натурального происхождения — новаторскую и уникальную, — которая не маскирует аромат кофе и чая: она раскрывает его и усиливает эффект. Когда сахар высвобождается сразу, вместе с ароматом, и заглушает его, наша сладость умеет ждать — она сопровождает лишь горечь, ту, что приходит после ароматов. Без калорий, без скачка сахара: новый взгляд на горячий напиток, чтобы <strong>оставить только удовольствие</strong>.", "lab.legSugar": "Сахар", "lab.legAroma": "Аромат", "lab.legBitter": "Горечь", "lab.annAroma": "Сначала аромат", "lab.annPeak": "Сладость на пике горечи", "lab.caption": "Иллюстративная схема", "lab.stat1": "0 калорий", "lab.stat1sub": "против ~16 ккал у сахара", "lab.stat2": "Без скачка сахара", "lab.stat3": "Ароматы сохранены", "lab.stat3sub": "аромат прежде сладости", "lab.axisI": "Интенсивность", "lab.axisT": "Во рту →", "nav.lab": "Лаборатория", "man.sub": "SwitZero ничего не маскирует. Он сопровождает. Натуральная, деликатная сладость, которая позволяет вашей чашке — как кофе, так и чаю — раскрыться полностью: без сахара, без калорий, без компромиссов.", "lab.stat4": "Без послевкусия", "lab.stat4sub": "без горечи и металлического привкуса"}, "ar": {"lab.eyebrow": "مختبرنا", "lab.h2": "الحلاوة، في اللحظة المناسبة.", "lab.p": "طوّر مختبرنا تركيبة من أصل طبيعي، مبتكرة وفريدة، لا تحجب عطر القهوة والشاي بل تُبرزه وتضاعف أثره. فبينما يتحرّر السكر دفعةً واحدة، مع العطر نفسه، فيخنقه، تعرف حلاوتنا كيف تنتظر — فهي لا ترافق سوى المرارة، تلك التي تأتي بعد العطور. بلا سعرات، وبلا ارتفاع في سكّر الدم: طريقة تُحدث ثورة في المشروب الساخن لِ<strong>تُبقي المتعة وحدها</strong>.", "lab.legSugar": "السكر", "lab.legAroma": "العطر", "lab.legBitter": "المرارة", "lab.annAroma": "العطر أولاً", "lab.annPeak": "حلاوة عند ذروة المرارة", "lab.caption": "رسم توضيحي", "lab.stat1": "0 سعرة حرارية", "lab.stat1sub": "مقابل ~16 سعرة للسكر", "lab.stat2": "بلا ارتفاع في سكّر الدم", "lab.stat3": "العطور محفوظة", "lab.stat3sub": "العطر قبل الحلاوة", "lab.axisI": "الشدّة", "lab.axisT": "في الفم →", "nav.lab": "المختبر", "man.sub": "سويتزيرو لا يُخفي شيئًا، بل يُرافق. حلاوة طبيعية خفيّة تترك فنجانك — قهوةً كان أم شايًا — يُعبّر عن نفسه بالكامل: بلا سكر، بلا سعرات، بلا تنازل.", "lab.stat4": "بلا مذاق لاحق", "lab.stat4sub": "لا مرارة ولا طعم معدني"}};
+Object.keys(LAB_I18N).forEach(function(l){if(I18N[l])Object.assign(I18N[l],LAB_I18N[l]);});
+let contactThanks='Merci ✓';
+function applyLang(lang){
+  const d=I18N[lang]; if(!d) return;
+  document.querySelectorAll('[data-i18n]').forEach(el=>{const k=el.getAttribute('data-i18n'); if(d[k]!=null) el.innerHTML=d[k];});
+  document.querySelectorAll('[data-i18n-ph]').forEach(el=>{const k=el.getAttribute('data-i18n-ph'); if(d[k]!=null) el.setAttribute('placeholder',d[k]);});
+  const rtl=(lang==='ar');
+  document.documentElement.setAttribute('lang',lang);
+  document.documentElement.setAttribute('dir',rtl?'rtl':'ltr');
+  const cur=document.getElementById('langCurrent'); if(cur) cur.textContent=LANG_LABEL[lang]||lang.toUpperCase();
+  document.querySelectorAll('#langMenu button').forEach(b=>b.setAttribute('aria-current', b.getAttribute('data-lang')===lang?'true':'false'));
+  contactThanks=d['con.thanks']||contactThanks;
+}
+const langWrap=document.getElementById('lang');
+const langBtn=document.getElementById('langBtn');
+if(langBtn){
+  langBtn.addEventListener('click',e=>{e.stopPropagation();const open=langWrap.classList.toggle('open');langBtn.setAttribute('aria-expanded',open);});
+  document.querySelectorAll('#langMenu button').forEach(b=>{
+    b.addEventListener('click',()=>{applyLang(b.getAttribute('data-lang'));langWrap.classList.remove('open');langBtn.setAttribute('aria-expanded','false');});
+  });
+  document.addEventListener('click',e=>{if(langWrap&&!langWrap.contains(e.target)){langWrap.classList.remove('open');langBtn.setAttribute('aria-expanded','false');}});
+}
+const subBtn=document.getElementById('subBtn');
+if(subBtn){subBtn.addEventListener('click',()=>{const inp=subBtn.previousElementSibling; if(inp) inp.value=''; subBtn.textContent=contactThanks;});}
+applyLang('en');
+
+</script>
+</body>
+</html>
